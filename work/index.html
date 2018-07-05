@@ -1,0 +1,347 @@
+<html>
+<head>
+  <title>Miao Tian</title>
+  <link rel='stylesheet' href="/css/style.css" type='text/css' />
+  <script src="/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+  <style>
+    body {margin: 0; }
+    canvas {width: 100%; height: 100% }
+  </style>
+</head>
+<body>
+  <canvas></canvas>
+
+  <header class="site-header">
+    <div class="header-wrapper global-width">
+      <div class="site-title no-back">
+        <h1><a href='/'>Miao Tian</a></h1>
+      </div>
+
+      <div class="site-nav">
+        <ul>
+          <li class="active-tab"><a href="/work">Works</a></li>
+          <li><a href="/bio">About</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <div class="content global-width">
+    <div class="projects-wrapper">
+      <div class="projects" id="projects-tag-0">
+        <div class="arrow left-arrow" id="left-arrow-0" style="display: none;"><a href="javascript:void(0);" onclick="scrollToLeft(0)">&lt;</a></div>
+        <ul class="carousel">
+          <li>
+            <a href="/projects/basic-necessity/">
+              <div class="project-block">
+                <img src="/img/bn_icon.png"/ class="grayed">
+              </div>
+              <div class="project-title">
+                <h3 class="grayed">Basic Necessity</h3>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="/projects/commodity-fetishism/">
+              <div class="project-block">
+                <img src="/img/cf_icon.png"/ class="grayed">
+              </div>
+              <div class="project-title">
+                <h3 class="grayed">Commodity Fetishism</h3>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="/projects/show-starts-at-37c/">
+              <div class="project-block">
+                <img src="/img/ssa-37c_icon.png" class="grayed" />
+              </div>
+              <div class="project-title">
+                <h3>Show Starts At -37C</h3>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="/projects/grown-into-you/">
+              <div class="project-block">
+                <img src="/img/gity_icon.png" class="grayed" />
+              </div>
+              <div class="project-title">
+                <h3>Grown Into You</h3>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="/projects/human-territory/">
+              <div class="project-block">
+                <img src="/img/ht_icon.png" class="grayed" />
+              </div>
+              <div class="project-title">
+                <h3>Human Territory</h3>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="/projects/granate-sapien/">
+              <div class="project-block">
+                <img src="/img/gs_icon.png" class="grayed" />
+              </div>
+              <div class="project-title">
+                <h3>Granate Sapien</h3>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="/projects/wuhaus/">
+              <div class="project-block">
+                <img src="/img/w_icon.png" class="grayed" />
+              </div>
+              <div class="project-title">
+                <h3>Wuhaus</h3>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="/projects/ramping-library/">
+              <div class="project-block">
+                <img src="/img/rl_icon.png" class="grayed" />
+              </div>
+              <div class="project-title">
+                <h3>Ramping Library</h3>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="/projects/micro-macro/">
+              <div class="project-block">
+                <img src="/img/mm_icon.png" class="grayed" />
+              </div>
+              <div class="project-title">
+                <h3>Micro Macro</h3>
+              </div>
+            </a>
+          </li>
+        </ul>
+        <div class="arrow right-arrow" id="right-arrow-0"><a href="javascript:void(0);" onclick="scrollToRight(0)">&gt;</a></div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <footer>
+    <div class="global-width">
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+    var currentPage = [0, 0];
+    var numPages = [3, 4];
+    function scrollToLeft(tagId) {
+      if (currentPage[tagId] > 0) {
+        var list = document.getElementsByClassName("carousel")[tagId];
+        list.scrollLeft -= list.clientWidth;
+        currentPage[tagId] -= 1;
+        document.getElementById("right-arrow-" + tagId).style.display = "block";
+      }
+      if (currentPage[tagId] == 0)
+        document.getElementById("left-arrow-" + tagId).style.display = "none";
+    }
+    function scrollToRight(tagId) {
+      if (currentPage[tagId] < numPages[tagId] - 1) {
+        var list = document.getElementsByClassName("carousel")[tagId];
+        list.scrollLeft += list.clientWidth;
+        currentPage[tagId] += 1;
+        document.getElementById("left-arrow-" + tagId).style.display = "block";
+      }
+      if (currentPage[tagId] == numPages[tagId] - 1)
+        document.getElementById("right-arrow-" + tagId).style.display = "none";
+    }
+    var activeTagId = 0;
+    function selectTag(tagId) {
+      if (tagId != activeTagId) {
+        while (currentPage[activeTagId] > 0)
+          scrollToLeft(activeTagId);
+
+        var tags = document.getElementsByClassName("tag-item");
+        tags[tagId].classList.add("active");
+        tags[activeTagId].classList.remove("active");
+        document.getElementById("projects-tag-" + tagId).style.display = "block";
+        document.getElementById("projects-tag-" + activeTagId).style.display = "none";
+
+        activeTagId = tagId;
+      }
+    }
+  </script>
+
+  <script src="/js/three.js"></script>
+    <script src="/js/controls/OrbitControls.js"></script>
+    <script src="/js/objects/Sky.js"></script>
+    <script src="/js/Detector.js"></script>
+    <script src="/js/libs/stats.min.js"></script>
+    <script src="/js/libs/dat.gui.min.js"></script>
+    <script src="/js/libs/inflate.min.js"></script>
+    <script src="/js/loaders/FBXLoader.js"></script>
+
+    <script type="text/javascript">
+      // threejs ocean horizon
+      if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
+      var camera, scene, renderer, light, canvas;
+      var controls, grass;
+
+      init();
+      animate();
+      function init() {
+        canvas = document.querySelector("canvas");
+        //
+        renderer = new THREE.WebGLRenderer({canvas: canvas});
+        renderer.setPixelRatio( window.devicePixelRatio );
+        renderer.setSize( window.innerWidth, window.innerHeight );
+        //
+        scene = new THREE.Scene();
+        //
+        camera = new THREE.PerspectiveCamera( 55, window.innerWidth / window.innerHeight, 1, 20000 );
+        camera.position.set( 30, 30, 100 );
+        //
+        light = new THREE.DirectionalLight( 0xffffff, 0.8 );
+        scene.add( light );
+        // grass
+        var geometry = new THREE.PlaneBufferGeometry( 100, 100 );
+        var texture = new THREE.CanvasTexture( generateTexture() );
+        for ( var i = 0; i < 15; i ++ ) {
+          var material = new THREE.MeshBasicMaterial( {
+            color: new THREE.Color().setHSL( 0.3, 0.75, ( i / 15 ) * 0.4 + 0.1 ),
+            map: texture,
+            depthTest: false,
+            depthWrite: false,
+            transparent: true
+          } );
+          var mesh = new THREE.Mesh( geometry, material );
+          mesh.position.y = i * 0.25;
+          mesh.rotation.x = - Math.PI / 2;
+          scene.add( mesh );
+        }
+        // Skybox
+        var sky = new THREE.Sky();
+        sky.scale.setScalar( 10000 );
+        scene.add( sky );
+        var uniforms = sky.material.uniforms;
+        uniforms.turbidity.value = 10;
+        uniforms.rayleigh.value = 2;
+        uniforms.luminance.value = 1;
+        uniforms.mieCoefficient.value = 0.005;
+        uniforms.mieDirectionalG.value = 0.8;
+        
+        var incfloat;
+        var parameters = {
+          distance: 400,
+          inclination: 0.47,
+          azimuth: 0.205
+        };
+
+        if (parameters.inclination > 0.47 && parameters.inclination < 0.51 ) {
+          uniforms.rfloat.value = 0.9;
+          uniforms.gfloat.value = 0.8;
+          uniforms.bfloat.value = 1.1;
+          uniforms.afloat.value = 1.0;
+        } else if (parameters.inclination <= 0.47 && parameters.inclination > 0.45 ) {
+          uniforms.rfloat.value = 1.1;
+          uniforms.gfloat.value = 0.85;
+          uniforms.bfloat.value = 1.05;
+          uniforms.afloat.value = 1.5;
+        } else {
+          uniforms.rfloat.value = 1.0;
+          uniforms.gfloat.value = 1.0;
+          uniforms.bfloat.value = 1.0;
+          uniforms.afloat.value = 2.0;
+        }
+
+        var cubeCamera = new THREE.CubeCamera( 1, 20000, 256 );
+        cubeCamera.renderTarget.texture.minFilter = THREE.LinearMipMapLinearFilter;
+        function updateSun() {
+          var theta = Math.PI * ( parameters.inclination - 0.5 );
+          var phi = 2 * Math.PI * ( parameters.azimuth - 0.5 );
+          light.position.x = parameters.distance * Math.cos( phi );
+          light.position.y = parameters.distance * Math.sin( phi ) * Math.sin( theta );
+          light.position.z = parameters.distance * Math.sin( phi ) * Math.cos( theta );
+          sky.material.uniforms.sunPosition.value = light.position.copy( light.position );
+          //grass.material.uniforms.sunDirection.value.copy( light.position ).normalize();
+          cubeCamera.update( renderer, scene );
+        }
+        updateSun();
+        //
+        var geometry = new THREE.IcosahedronBufferGeometry( 20, 1 );
+        var count = geometry.attributes.position.count;
+        var colors = [];
+        var color = new THREE.Color();
+        for ( var i = 0; i < count; i += 3 ) {
+          color.setHex( Math.random() * 0xffffff );
+          colors.push( color.r, color.g, color.b );
+          colors.push( color.r, color.g, color.b );
+          colors.push( color.r, color.g, color.b );
+        }
+        geometry.addAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
+        var material = new THREE.MeshStandardMaterial( {
+          vertexColors: THREE.VertexColors,
+          roughness: 0.0,
+          flatShading: true,
+          envMap: cubeCamera.renderTarget.texture,
+          side: THREE.DoubleSide
+        } );
+        
+        // Falling basic necessaties
+        var geometry = new THREE.BoxBufferGeometry( 10, 10, 10 );
+        var material = new THREE.MeshBasicMaterial( {color: 0xffa092});
+
+        //
+        controls = new THREE.OrbitControls( camera, renderer.domElement );
+        controls.maxPolarAngle = Math.PI * 0.525;
+        controls.target.set( 0, 10, 0 );
+        controls.minDistance = 40.0;
+        controls.maxDistance = 200.0;
+        camera.lookAt( controls.target );
+        //
+       // window.addEventListener( 'resize', onWindowResize, false );
+      }
+      function onWindowResize() {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize( window.innerWidth, window.innerHeight );
+      }
+      function animate() {
+        requestAnimationFrame( animate );
+        render();      }
+      function render() {
+        var time = Date.now() / 6000;
+
+        camera.position.x = 80 * Math.cos( time );
+        camera.position.z = 80 * Math.sin( time );
+        camera.lookAt( scene.position );
+        for ( var i = 0, l = scene.children.length; i < l; i ++ ) {
+          var mesh = scene.children[ i ];
+          mesh.position.x = Math.sin( time * 4 ) * i * i * 0.005;
+          mesh.position.z = Math.cos( time * 6 ) * i * i * 0.005;
+        }
+        renderer.render( scene, camera );
+      }
+
+      function generateTexture() {
+        var canvas = document.createElement( 'canvas' );
+        canvas.width = 512;
+        canvas.height = 512;
+        var context = canvas.getContext( '2d' );
+        for ( var i = 0; i < 20000; i++ ) {
+          context.fillStyle = 'hsl(0,0%,' + ( Math.random() * 50 + 50 ) + '%)';
+          context.beginPath();
+          context.arc( Math.random() * canvas.width, Math.random() * canvas.height, Math.random() + 0.15, 0, Math.PI * 2, true );
+          context.fill();
+        }
+        context.globalAlpha = 0.075;
+        context.globalCompositeOperation = 'lighter';
+        return canvas;
+      }
+
+    </script>
+
+</body>
+</html>
