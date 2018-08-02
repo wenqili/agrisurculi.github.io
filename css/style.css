@@ -48,6 +48,12 @@ html, body, div, p, img, h1, h2, h3, h4, h5, h6 {
   font-family: Znikomit, "Source Sans Pro";
 }
 
+img{
+    cursor: -moz-zoom-in; 
+    cursor: -webkit-zoom-in; 
+    cursor: zoom-in;
+}
+
 canvas {
   width: 100vw;
   height: 100vh;
