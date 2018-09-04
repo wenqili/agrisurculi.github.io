@@ -439,6 +439,9 @@ footer div object {
 
 .article-column {
   width: 530px;
+  padding: 0 9vw;
+  position: relative;
+  float:right;
 }
 
 /*
@@ -458,15 +461,15 @@ footer div object {
   font-size: 15px;
   line-height: 1.7em;
   margin: 0 auto;
-  margin-right: 108px;
+/*   margin-right: 108px; */
   margin-bottom: 5px;
   color: #4c4c4c;
   text-align: center;
 }
 
 .article img {
-  /* margin: 0 auto; */
-  margin: 0 48px;
+  margin: 0 auto;
+  /* margin: 0 48px; */
   margin-bottom: 20px;
   max-width: 100%;
   display: block;
@@ -656,7 +659,7 @@ footer div object {
 .image-center-single-column {
   align-content: center;
   display: block;
-  padding-right: 108px;
+  /* padding-right: 108px; */
   width: 30%;
 }
 
